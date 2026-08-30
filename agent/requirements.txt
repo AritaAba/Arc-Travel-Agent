@@ -1,0 +1,13 @@
+setuptools>=69.0.0,<82
+agentscope==1.0.16
+mcp>=1.13,<2.0
+requests==2.32.3
+pymilvus[milvus_lite]==2.6.9
+sentence-transformers==5.2.3
+rich==13.9.4
+ddgs==9.10.0
+pyyaml==6.0.2
+python-dotenv==1.0.1
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+httpx==0.28.1
