@@ -1,5 +1,3 @@
-
-
 import json
 import os
 import sys
@@ -34,7 +32,6 @@ AGENT_DISPLAY_NAMES = {
 
 
 class AligoCore:
-
     def __init__(self, user_id: str = "default_user", session_id: Optional[str] = None):
         self.user_id = user_id
         self.session_id = session_id or str(uuid.uuid4())[:8]

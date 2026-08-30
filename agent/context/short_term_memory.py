@@ -6,7 +6,6 @@ logger = logging.getLogger(__name__)
 
 
 class ShortTermMemory:
-
     def __init__(self, max_turns: int = 10):
         self.max_turns = max_turns
         self.messages: List[Dict[str, Any]] = []
@@ -20,7 +19,6 @@ class ShortTermMemory:
         }
 
         self.messages.append(message)
-
 
 
         max_messages = self.max_turns * 2

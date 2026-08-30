@@ -9,7 +9,6 @@ logger = logging.getLogger(__name__)
 
 
 class IntentionAgent(AgentBase):
-
     def __init__(self, name: str = "IntentionRecognitionAgent", model=None, **kwargs):
         super().__init__()
         self.name = name
@@ -41,7 +40,6 @@ class IntentionAgent(AgentBase):
                         self.conversation_history.append(f"{role_name}: {content}")
         else:
             user_query = x.content
-
 
 
         context_parts = []
@@ -76,12 +74,12 @@ class IntentionAgent(AgentBase):
             "ask-question": "rag_knowledge",
             "event-collection": "event_collection"
         }
-        
+
         dynamic_skills_prompt = self.skill_loader.get_skill_prompt(skill_mapping)
-        
+
 
         prompt = f"""你是一个高级意图识别专家（IntentionRecognitionAgent）。请分析用户查询，识别意图并输出结构化的决策。
-        
+
 【当前时间】
 {current_time} {weekday}
 （重要：当用户说"2月28日"或"明天"等相对时间时，请根据当前时间进行推断完整日期）

@@ -29,9 +29,6 @@ init_agentscope = config_agentscope.init_agentscope
 import importlib.util
 
 def load_agent_module(skill_name, agent_class_name):
-
-
-
     current_file = Path(__file__).resolve()
     skills_dir = current_file.parent.parent.parent
     agent_path = skills_dir / skill_name / "script" / "agent.py"
@@ -46,7 +43,6 @@ def load_agent_module(skill_name, agent_class_name):
 
 
 async def plan_trip(user_query: str):
-
     init_agentscope()
 
 

@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 
 
 class EventCollectionAgent(AgentBase):
-
     def __init__(self, name: str = "EventCollectionAgent", model=None, **kwargs):
         super().__init__()
         self.name = name

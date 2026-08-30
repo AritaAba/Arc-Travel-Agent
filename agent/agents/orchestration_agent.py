@@ -9,7 +9,6 @@ logger = logging.getLogger(__name__)
 
 
 class OrchestrationAgent(AgentBase):
-
     def __init__(
         self,
         name: str = "OrchestrationAgent",
@@ -251,7 +250,6 @@ class OrchestrationAgent(AgentBase):
                     result = {"output": response.content}
             else:
                 result = response.content
-
 
 
             if isinstance(result, dict) and "error" in result:

@@ -17,7 +17,6 @@ def _env(key, default):
     return val if val not in (None, "") else default
 
 
-
 LLM_CONFIG = {
     "api_key": _env("LLM_API_KEY", ""),
     "model_name": _env("LLM_MODEL", "deepseek-chat"),

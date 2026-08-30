@@ -30,7 +30,6 @@ except ImportError as e:
 
 
 class RAGKnowledgeAgent(AgentBase):
-
     def __init__(
         self,
         name: str = "RAGKnowledgeAgent",
@@ -44,7 +43,7 @@ class RAGKnowledgeAgent(AgentBase):
         super().__init__()
         self.name = name
         self.model = model
-        
+
         if knowledge_base_path is None:
 
             current_dir = Path(__file__).parent.parent
@@ -261,7 +260,7 @@ class RAGKnowledgeAgent(AgentBase):
                     extracted_query = data["context"].get("rewritten_query", "")
                 elif "rewritten_query" in data:
                     extracted_query = data.get("rewritten_query", "")
-                
+
 
                 user_query = extracted_query
             except:
@@ -342,7 +341,7 @@ class RAGKnowledgeAgent(AgentBase):
 
                 if not answer:
                     answer = "无法生成答案"
-                
+
 
                 answer_str = answer.strip()
                 if answer_str.startswith("{") and answer_str.endswith("}"):

@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 
 
 class PreferenceAgent(AgentBase):
-
     def __init__(self, name: str = "PreferenceAgent", model=None, memory_manager=None, **kwargs):
         super().__init__()
         self.name = name

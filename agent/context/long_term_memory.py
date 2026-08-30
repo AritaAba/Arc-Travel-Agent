@@ -9,7 +9,6 @@ logger = logging.getLogger(__name__)
 
 
 class LongTermMemory:
-
     def __init__(self, user_id: str, storage_path: str = "data/memory"):
         self.user_id = user_id
         self.storage_path = storage_path
@@ -40,7 +39,6 @@ class LongTermMemory:
             return self._init_data()
 
     def _migrate_data(self, data: Dict[str, Any]) -> Dict[str, Any]:
-
         if "chat_history" not in data:
             data["chat_history"] = []
         if "trip_history" not in data:
@@ -110,7 +108,6 @@ class LongTermMemory:
             logger.error(f"Failed to save long-term memory: {e}")
 
     def save_preference(self, pref_type: str, value: Any):
-
         preferences = self.data["preferences"]
         found = False
 
@@ -144,7 +141,6 @@ class LongTermMemory:
             return None
 
     def add_hotel_brand(self, brand: str):
-
         preferences = self.data["preferences"]
         found = False
 
@@ -168,7 +164,6 @@ class LongTermMemory:
         logger.info(f"Added hotel brand preference: {brand}")
 
     def add_airline(self, airline: str):
-
         preferences = self.data["preferences"]
         found = False
 

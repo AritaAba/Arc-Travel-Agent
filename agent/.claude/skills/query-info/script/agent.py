@@ -56,7 +56,6 @@ def _is_suspicious_url(url: str) -> bool:
 
 
 class InformationQueryAgent(AgentBase):
-
     def __init__(self, name: str = "InformationQueryAgent", model=None, **kwargs):
         super().__init__()
         self.name = name

@@ -26,12 +26,12 @@ RAGKnowledgeAgent = load_rag_agent_class()
 
 def split_text(text: str, max_chars: int = 600, overlap: int = 100) -> List[str]:
     chunks = []
-    
+
 
     lines = text.split('\n')
     paragraphs = []
     current_para = []
-    
+
     for line in lines:
         if line.strip() == "":
             if current_para:
@@ -41,10 +41,10 @@ def split_text(text: str, max_chars: int = 600, overlap: int = 100) -> List[str]
             current_para.append(line)
     if current_para:
         paragraphs.append("\n".join(current_para))
-    
+
 
     current_chunk = ""
-    
+
     for para in paragraphs:
 
         if len(current_chunk) + len(para) <= max_chars:
@@ -53,7 +53,7 @@ def split_text(text: str, max_chars: int = 600, overlap: int = 100) -> List[str]
 
             if current_chunk:
                 chunks.append(current_chunk.strip())
-            
+
 
             if len(para) > max_chars:
 
@@ -67,10 +67,10 @@ def split_text(text: str, max_chars: int = 600, overlap: int = 100) -> List[str]
 
 
                 current_chunk = para
-    
+
     if current_chunk:
         chunks.append(current_chunk.strip())
-        
+
     return chunks
 
 def load_documents_from_directory(directory_path: str) -> List[Dict]:
@@ -136,10 +136,10 @@ def load_documents_from_directory(directory_path: str) -> List[Dict]:
 
 
             chunks = split_text(content, max_chars=600, overlap=100)
-            
+
             for i, chunk_content in enumerate(chunks):
                 doc_id = f"{base_doc_id}_{i+1}"
-                
+
 
                 document = {
                     "id": doc_id,
@@ -154,7 +154,7 @@ def load_documents_from_directory(directory_path: str) -> List[Dict]:
                     }
                 }
                 documents.append(document)
-            
+
             total_chunks += len(chunks)
             print(f"   ✓ 加载文档: {file_path.name} -> {len(chunks)} chunks")
 
@@ -194,7 +194,7 @@ def main():
 
 
         knowledge_base_path.mkdir(parents=True, exist_ok=True)
-        
+
 
         print("2. 初始化RAG Agent...")
         print(f"   知识库路径: {knowledge_base_path}")
@@ -226,9 +226,6 @@ def main():
 
 
         print("4. 将文档添加到RAG知识库...")
-        
-
-
 
 
         if rag_agent.milvus_client.has_collection(rag_agent.collection_name):
@@ -285,7 +282,7 @@ def main():
                             metadata = json.loads(metadata)
                         except:
                             metadata = {}
-                    
+
                     title = metadata.get('title', 'Unknown')
                     distance = doc.get('distance', 0.0)
                     print(f"      [{i}] {title} (相似度: {1-distance:.3f})")

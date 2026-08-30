@@ -1,5 +1,3 @@
-
-
 import asyncio
 import sys
 import os
@@ -29,7 +27,6 @@ from core import AligoCore
 
 
 class AligoCLI:
-
     def __init__(self):
         self.console = Console()
         self.user_id = None
@@ -66,7 +63,6 @@ class AligoCLI:
         self.console.print(table)
 
     async def initialize_system(self):
-
         self.user_id = Prompt.ask(
             "用户ID",
             default="default_user"
@@ -175,14 +171,12 @@ class AligoCLI:
                 continue
 
 
-
-
             if agent_name == "itinerary_planning":
                 itinerary = data.get("itinerary")
 
                 if not itinerary and "data" in data and isinstance(data["data"], dict):
                     itinerary = data["data"].get("itinerary")
-                
+
                 if itinerary:
                     title = itinerary.get('title', '行程规划')
                     self.console.print(f"\n✈️  [bold cyan]{title}[/bold cyan]")
@@ -268,7 +262,6 @@ class AligoCLI:
                         current_agent_shown = True
 
 
-
             elif agent_name == "event_collection":
 
                 origin = data.get("origin") or data.get("data", {}).get("origin")
@@ -291,7 +284,7 @@ class AligoCLI:
                 if missing_info:
                     self.console.print(f"\n💡 还需要补充: {', '.join(missing_info)}", style="yellow")
                     info_shown = True
-                
+
                 if info_shown:
                     current_agent_shown = True
 
@@ -333,7 +326,7 @@ class AligoCLI:
                 answer = data.get("answer")
                 if not answer and "data" in data and isinstance(data["data"], dict):
                     answer = data["data"].get("answer")
-                
+
 
                 if not answer:
                     answer = data.get("content") or data.get("data", {}).get("content")
@@ -341,7 +334,7 @@ class AligoCLI:
 
                 if isinstance(answer, dict):
                     answer = answer.get("answer", str(answer))
-                
+
                 if isinstance(answer, str) and answer.strip().startswith("{") and answer.strip().endswith("}"):
                     try:
                         import json
@@ -371,13 +364,13 @@ class AligoCLI:
 
                 common_keys = ["answer", "content", "result", "message", "summary", "text", "description"]
                 fallback_content = ""
-                
+
 
                 for k in common_keys:
                     if k in data and isinstance(data[k], str) and data[k].strip():
                         fallback_content = data[k]
                         break
-                
+
 
                 if not fallback_content and "data" in data and isinstance(data["data"], dict):
                     for k in common_keys:
@@ -400,7 +393,6 @@ class AligoCLI:
         return has_output
 
     def _get_agent_display_name(self, agent_name: str) -> str:
-
         agent_display_names = {
             "event_collection": "事项收集",
             "preference": "偏好管理",
@@ -412,7 +404,6 @@ class AligoCLI:
         return agent_display_names.get(agent_name, agent_name)
 
     def show_status(self):
-
         full_context = self.memory_manager.get_full_context()
         short_term_stats = full_context["short_term"]["statistics"]
         long_term_stats = full_context["long_term"]["statistics"]
@@ -525,7 +516,6 @@ class AligoCLI:
         self.console.print(table)
 
     async def run(self):
-
         self.print_banner()
 
 

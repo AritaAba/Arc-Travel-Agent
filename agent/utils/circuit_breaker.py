@@ -17,7 +17,6 @@ class CircuitOpenError(Exception):
 
 
 class CircuitBreaker:
-
     def __init__(
         self,
         failure_threshold: int = 5,

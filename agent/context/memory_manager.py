@@ -8,7 +8,6 @@ logger = logging.getLogger(__name__)
 
 
 class MemoryManager:
-
     def __init__(self, user_id: str, session_id: str, storage_path: str = "data/memory", llm_model=None):
         self.user_id = user_id
         self.session_id = session_id
@@ -21,17 +20,11 @@ class MemoryManager:
         logger.info(f"Memory manager initialized for user {user_id}, session {session_id}")
 
 
-
     def add_message(self, role: str, content: str, metadata: Dict = None):
-
         self.short_term.add_message(role, content, metadata)
 
 
         self.long_term.add_chat_message(role, content, self.session_id)
-
-
-
-
 
 
     def get_full_context(self) -> Dict[str, Any]:
@@ -77,7 +70,6 @@ class MemoryManager:
             lines.append("")
 
         return "\n".join(lines) if lines else "无上下文信息"
-
 
 
     def end_session(self):

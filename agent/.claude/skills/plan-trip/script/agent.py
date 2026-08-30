@@ -16,7 +16,6 @@ logger = logging.getLogger(__name__)
 
 
 class ItineraryPlanningAgent(AgentBase):
-
     def __init__(self, name: str = "ItineraryPlanningAgent", model=None, **kwargs):
         super().__init__()
         self.name = name
@@ -124,7 +123,7 @@ class ItineraryPlanningAgent(AgentBase):
 
 
             result = None
-            
+
 
             try:
                 result = robust_json_parse(text, fallback=None)
@@ -137,10 +136,10 @@ class ItineraryPlanningAgent(AgentBase):
                         import re
                         clean_text = re.sub(r'```json\s*', '', clean_text, flags=re.IGNORECASE)
                         clean_text = re.sub(r'```', '', clean_text)
-                    
+
                     clean_text = clean_text.strip()
                     start_idx = clean_text.find('{')
-                    
+
                     if start_idx != -1:
 
                         clean_text = clean_text[start_idx:]
